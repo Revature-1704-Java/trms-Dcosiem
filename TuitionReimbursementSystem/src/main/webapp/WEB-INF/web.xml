@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
-  <display-name>TRMS</display-name>
+  <display-name>TuitionReimbursementSystem</display-name>
   <welcome-file-list>
     <welcome-file>D:\Vit\TuitionReimbursementSystem\src\main\webapp\index.html</welcome-file>
   </welcome-file-list>
-  
-  <!-- ServletContext - configuration for all servlets, loaded on init() -->
-  <context-param>
-  	<param-name>favColor</param-name>
-  	<param-value>blue</param-value>
-  </context-param>
   
   <servlet>
     <servlet-name>LoginServlet</servlet-name>
@@ -21,8 +15,8 @@
     </init-param>
   </servlet>
   <servlet>
-  	<servlet-name>ForwardRedirectServlet</servlet-name>
-  	<servlet-class>com.revature.controllers.ForwardRedirectServlet</servlet-class>
+  	<servlet-name>ReimbursementFormServlet</servlet-name>
+  	<servlet-class>com.revature.controllers.ReimbursementFormServlet</servlet-class>
   </servlet>
   
   <servlet-mapping>
@@ -30,8 +24,8 @@
     <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>ForwardRedirectServlet</servlet-name>
-  	<url-pattern>/ForwardRedirectServlet</url-pattern>
+  	<servlet-name>ReimbursementFormServlet</servlet-name>
+  	<url-pattern>/ReimbursementFormServlet</url-pattern>
   </servlet-mapping>
   
 </web-app>

@@ -72,8 +72,8 @@ public class Employee {
 				+ password + ", email=" + email + ", supervisor_id=" + supervisor_id + ", depthead_id=" + depthead_id
 				+ ", et_id=" + et_id + ", a_id=" + a_id + "]";
 	}
-	public Employee(int e_id, String firstname, String lastname, String password, String email, int supervisor_id,
-			int depthead_id, int et_id, int a_id) {
+	
+	public Employee(int e_id, String firstname, String lastname, String email, int supervisor_id, int depthead_id, int et_id, String password, int a_id) {
 		super();
 		this.e_id = e_id;
 		this.firstname = firstname;

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Reimbursement Form</title>
+</head>
+<body>
+	<form action="SubmitFormServlet" name="myform" method="GET">
+		First Name:<input type="text" name="fname" maxlength="20" required><br>
+		Last Name:<input type="text" name="lname" maxlength="30" required><br>
+		Employee ID#:<input type="number" name="employeeID" min="0" maxlength="10" required><br>
+		Type of Event:<select name="typeOfEvent">
+			<option value="1">University Course</option>
+			<option value="2">Seminar</option>
+			<option value="3">Certification Prep. Class</option>
+			<option value="4">Certification</option>
+			<option value="5">Technical Training</option>
+			<option value="6">Other</option>
+		</select>
+		<br>
+		Description:<textarea style="resize:none" name="description" maxlength="200" required></textarea><br>
+		Location:<input type="text" name="location" maxlength="40" required><br>
+		Justification:<textarea style="resize:none" name="justification" maxlength="200" required></textarea><br>		
+		Date of Event:<input type="date" name="dateOfEvent" required><br>
+		Grade Format:<select name="gradeFormat">
+			<option value="1">Presentation</option>
+			<option value="2">Exam</option>
+			<option value="3">Demo</option>
+		</select>
+		<br>
+		Cost:<input type="number" name="cost" min="0" maxlength="20" required><br>
+		Time Missed:<input type="number" name="missed" min="0" placeholder="Time Missed in Hours" required><br>
+		<input type="submit" value="Submit Reimbursement">		
+	</form>
+
+
+</body>
+</body>
+</html>

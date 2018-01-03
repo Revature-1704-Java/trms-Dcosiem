@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Data Page</title>
+</head>
+<body> 
+<script>
+	var reqBody = JSON.parse(request.data);
+	var resBody = JSON.parse(responseBody);
+	
+	var e_id = request.getAttribute("ident");
+	document.getElementById('e_id').innerHTML = e_id;
+	
+</script>
+<table border="1" width="303">
+	<tr>
+		<th>ID</th>
+		<th>First Name</th>
+		<th>Last Name</th>
+		<th>Email</th>
+		<th>Supervisor</th>
+		<th>Department Head</th>
+		<th>Title</th>
+		<th>Allotment</th>
+		<th>Pending</th>
+		<th>Awarded</th>		
+	</tr>
+	<tr>
+		<td id="e_id"></td>
+		<td id="f_name"></td>
+		<td id="l_name"></td>
+		<td id="email"></td>
+		<td id="sup"></td>
+		<td id="dept"></td>
+		<td id="title"></td>
+		<td id="allot"></td>
+		<td id="pend"></td>
+		<td id="award"></td>
+	</tr>
+	
+
+<!-- <tr> -->
+<!-- <td width="119"><b>ID</b></td> -->
+<!-- <td width="168"><b>Message</b></td> -->
+<!-- </tr> -->
+<!-- <script> -->
+
+<!-- </script> -->
+<!-- <tr id="dis_data"> -->
+<!-- 	test text -->
+<!-- </tr> -->
+
+</table>
+</body>
+</html>
