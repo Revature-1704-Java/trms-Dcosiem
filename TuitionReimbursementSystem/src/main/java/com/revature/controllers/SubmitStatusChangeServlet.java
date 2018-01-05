@@ -15,6 +15,7 @@ public class SubmitStatusChangeServlet extends HttpServlet{
 		//Manager pressed submit decision on one of the reimbursement
 		//Will now update db with decision they made and update their queue and return that view after updating the db
 		ReimbursementDAO rd = new ReimbursementDAO();
+		
 		boolean approve_or_deny = false;
 		if (request.getParameter("decision").equals("approve")) {
 			approve_or_deny = true;
