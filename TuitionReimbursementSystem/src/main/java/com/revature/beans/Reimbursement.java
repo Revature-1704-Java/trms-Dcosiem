@@ -9,11 +9,11 @@ public class Reimbursement {
 	private String reim_loc;
 	private String justification;
 	private String date_of_event;
-	private int GRADE_ID;
+	private int grade_id;
 	private double cost;
 	private String time_submitted;
-	private String time_missed;
-	private int state;
+	private double time_missed;
+	private int status;
 	private double exceed_amount;
 	private String exceed_reason;
 	private String denied_reason;
@@ -59,11 +59,11 @@ public class Reimbursement {
 	public void setDate_of_event(String date_of_event) {
 		this.date_of_event = date_of_event;
 	}
-	public int getGRADE_ID() {
-		return GRADE_ID;
+	public int getGrade_id() {
+		return grade_id;
 	}
-	public void setGRADE_ID(int gRADE_ID) {
-		GRADE_ID = gRADE_ID;
+	public void setGrade_id(int grade_id) {
+		this.grade_id = grade_id;
 	}
 	public double getCost() {
 		return cost;
@@ -77,17 +77,17 @@ public class Reimbursement {
 	public void setTime_submitted(String time_submitted) {
 		this.time_submitted = time_submitted;
 	}
-	public String getTime_missed() {
+	public double getTime_missed() {
 		return time_missed;
 	}
-	public void setTime_missed(String time_missed) {
+	public void setTime_missed(double time_missed) {
 		this.time_missed = time_missed;
 	}
-	public int getState() {
-		return state;
+	public int getStatus() {
+		return status;
 	}
-	public void setState(int state) {
-		this.state = state;
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	public double getExceed_amount() {
 		return exceed_amount;
@@ -111,13 +111,13 @@ public class Reimbursement {
 	public String toString() {
 		return "Reimbursement [reim_id=" + reim_id + ", e_id=" + e_id + ", event_type_id=" + event_type_id
 				+ ", reim_desc=" + reim_desc + ", reim_loc=" + reim_loc + ", justification=" + justification
-				+ ", date_of_event=" + date_of_event + ", GRADE_ID=" + GRADE_ID + ", cost=" + cost + ", time_submitted="
-				+ time_submitted + ", time_missed=" + time_missed + ", state=" + state + ", exceed_amount="
+				+ ", date_of_event=" + date_of_event + ", grade_id=" + grade_id + ", cost=" + cost + ", time_submitted="
+				+ time_submitted + ", time_missed=" + time_missed + ", status=" + status + ", exceed_amount="
 				+ exceed_amount + ", exceed_reason=" + exceed_reason + ", denied_reason=" + denied_reason + "]";
 	}
 	public Reimbursement(int reim_id, int e_id, int event_type_id, String reim_desc, String reim_loc,
-			String justification, String date_of_event, int gRADE_ID, double cost, String time_submitted,
-			String time_missed, int state, double exceed_amount, String exceed_reason, String denied_reason) {
+			String justification, String date_of_event, int grade_id, double cost, String time_submitted,
+			double time_missed, int status, double exceed_amount, String exceed_reason, String denied_reason) {
 		super();
 		this.reim_id = reim_id;
 		this.e_id = e_id;
@@ -126,11 +126,11 @@ public class Reimbursement {
 		this.reim_loc = reim_loc;
 		this.justification = justification;
 		this.date_of_event = date_of_event;
-		GRADE_ID = gRADE_ID;
+		this.grade_id = grade_id;
 		this.cost = cost;
 		this.time_submitted = time_submitted;
 		this.time_missed = time_missed;
-		this.state = state;
+		this.status = status;
 		this.exceed_amount = exceed_amount;
 		this.exceed_reason = exceed_reason;
 		this.denied_reason = denied_reason;

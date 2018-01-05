@@ -3,9 +3,12 @@ package com.revature.dao;
 import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import com.revature.beans.Allotment;
 import com.revature.beans.Employee;
@@ -96,8 +99,13 @@ public class EmployeeDAO {
 			}
 			
 			//update allotment table with new amount
-			a.updatePending(id, al.getPending(), projected_cost);
+			a.updatePending(a_id, al.getPending(), projected_cost);
 			
+			SimpleDateFormat format1 = new SimpleDateFormat("MM/dd/yyyy");
+		    SimpleDateFormat format2 = new SimpleDateFormat("dd-MMM-yy");
+		    java.util.Date date = format1.parse(date_of_event);
+			
+		    
 			
 			//Create a new Reimbursement by calling stored procedure
 			String sql = "{CALL SP_SUBMIT_REIM(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
@@ -107,7 +115,9 @@ public class EmployeeDAO {
 			cs.setString(3, description);
 			cs.setString(4, location);
 			cs.setString(5, justification);
-			cs.setString(6, date_of_event);			
+//			Date dt = new SimpleDateFormat("dd/MMM/yyyy").parse(date_of_event);
+//			Date d = (Date) new SimpleDateFormat("dd/MMM/yyyy").parse(date_of_event);
+			cs.setString(6, format2.format(date));			
 			cs.setInt(7, grade_id);
 			cs.setDouble(8,  cost);
 			cs.setDouble(9, time_missed);
@@ -124,6 +134,8 @@ public class EmployeeDAO {
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		} catch (IOException ex) {
+			ex.printStackTrace();
+		} catch (ParseException ex) {
 			ex.printStackTrace();
 		} finally {
 			if (ps != null) {

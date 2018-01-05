@@ -52,10 +52,38 @@ public class AllotmentDAO {
 		return a;
 	}
 	
+	public void updateAwarded(int id, double cost) {
+		PreparedStatement ps = null;
+		try(Connection conn = ConnectionUtil.getConnection()) {
+			
+			String sql = "UPDATE ALLOTMENT SET AWARDED = ? WHERE A_ID = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setDouble(1, getAllotment(id).getAwarded() + cost);
+			ps.setInt(2, id);
+			ps.execute();
+			getAllotment(id).getPending();
+			//we need to deduct the amount we just awarded from the pending field
+			updatePending(id, getAllotment(id).getPending(), -cost);
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		} finally {
+			if (ps != null) {
+				try {
+					ps.close();
+				} catch (SQLException sq) {
+					// TODO Auto-generated catch block
+					sq.printStackTrace();
+				}
+			}
+		}
+	}
+	
 	public void updatePending(int id, double current_pending, double projected_cost) {		
 		PreparedStatement ps = null;
 		try(Connection conn = ConnectionUtil.getConnection()) {
-			String sql ="UPDATE ALLOTMENT SET (PENDING) = ? FROM ALLOTMENT WHERE E_ID= ?";
+			String sql ="UPDATE ALLOTMENT SET PENDING = ? WHERE A_ID= ?";
 			ps = conn.prepareStatement(sql);
 			ps.setDouble(1, current_pending + projected_cost);
 			ps.setInt(2, id);

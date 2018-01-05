@@ -69,4 +69,40 @@ public class GradeDAO {
 		}
 		return g_id;
 	}
+	public String getLetterGrade(int id) {
+		PreparedStatement ps = null;
+		String letterGrade = "";
+		ResultSet rs = null;
+		try(Connection conn = ConnectionUtil.getConnection()) {
+			String sql = "SELECT LETTERGRADE FROM GRADE WHERE GRADE_ID=?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				letterGrade = rs.getString("LETTERGRADE");
+			}
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		} finally {
+			if (ps != null) {
+				try {
+					ps.close();
+				} catch (SQLException sq) {
+					// TODO Auto-generated catch block
+					sq.printStackTrace();
+				}
+			}
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException sq) {
+					// TODO Auto-generated catch block
+					sq.printStackTrace();
+				}
+			}
+		}
+		return letterGrade;
+	}
 }

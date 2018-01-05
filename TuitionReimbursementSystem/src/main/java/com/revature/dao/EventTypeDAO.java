@@ -22,10 +22,47 @@ public class EventTypeDAO {
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				//coverage amount is a percentage so we convert it to a decimal
-				coverage = rs.getInt("COVERAGE") / 100;
+				coverage = rs.getInt("COVERAGE") / 100.0;
 			}
 			//cost for reimbursement is the coverage of the event type * cost of the total event
 			answer = coverage * cost;
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}finally {
+			if (ps != null) {
+				try {
+					ps.close();
+				} catch (SQLException sq) {
+					// TODO Auto-generated catch block
+					sq.printStackTrace();
+				}
+			}
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException sq) {
+					// TODO Auto-generated catch block
+					sq.printStackTrace();
+				}
+			}
+		}
+		return answer;
+	}
+	public String getEventType(int id) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String answer = "";
+		try(Connection conn = ConnectionUtil.getConnection()) {
+			//We query the db for the Coverage amount			
+			String sql = "SELECT EVENT_TYPE FROM EVENT_TYPE WHERE EVENT_TYPE_ID=?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				answer = rs.getString("EVENT_TYPE");
+			}
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		} catch (IOException ex) {
